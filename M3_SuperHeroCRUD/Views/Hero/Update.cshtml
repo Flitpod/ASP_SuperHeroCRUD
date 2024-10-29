@@ -2,11 +2,13 @@
 @model SuperHero
 
 <h2>Update your Hero</h2>
+<h3>@Model.Name</h3>
 
 <form action="/hero/update" method="post" style="display: flex; flex-direction: column">
-    @Html.LabelFor(sh => sh.Name)
+   @*  @Html.LabelFor(sh => sh.Name)
     @Html.EditorFor(sh => sh.Name)
-    @Html.ValidationMessageFor(sh => sh.Name)
+    @Html.ValidationMessageFor(sh => sh.Name) *@
+    @Html.HiddenFor(sh => sh.Name)
     
     @Html.LabelFor(sh => sh.Power)
     @Html.EditorFor(sh => sh.Power)

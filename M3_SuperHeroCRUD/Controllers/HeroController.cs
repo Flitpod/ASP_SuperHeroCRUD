@@ -54,6 +54,11 @@ namespace M3_SuperHeroCRUD.Controllers
         [HttpPost]
         public IActionResult Update(SuperHero superHero)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(superHero);
+            }
+
             this.repository.Update(superHero);
             return RedirectToAction(nameof(Index));
         }
