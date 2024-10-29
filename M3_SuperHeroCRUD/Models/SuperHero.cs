@@ -4,7 +4,14 @@ namespace M3_SuperHeroCRUD.Models
 {
     public enum HeroSide
     {
-        Civil = 0, Good, Bad 
+        [Display(Name = "Civil")]
+        Civil = 0,
+
+        [Display(Name = "Good")]
+        Good = 1,
+
+        [Display(Name = "Bad")]
+        Bad = 2
     }
 
     public class SuperHero
