@@ -43,5 +43,19 @@ namespace M3_SuperHeroCRUD.Controllers
             this.repository.Delete(name);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public IActionResult Update(string name)
+        {
+            var hero = this.repository.Read(name);
+            return View(hero);
+        }
+
+        [HttpPost]
+        public IActionResult Update(SuperHero superHero)
+        {
+            this.repository.Update(superHero);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
