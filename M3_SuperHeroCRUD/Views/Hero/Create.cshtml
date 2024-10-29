@@ -1,14 +1,19 @@
-﻿<h2>Create your Hero</h2>
+﻿@using M3_SuperHeroCRUD.Models
+@model SuperHero
+
+<h2>Create your Hero</h2>
 
 <form action="/hero/create" method="post" >
     <label>Name</label>
     <br/>
-    <input type="text" name="name" />
+    <input type="text" name="name" required maxLength="50"/>
+    @Html.ValidationMessageFor(sh => sh.Name)
     <br/>
 
     <label>Power</label>
     <br />
-    <input type="number" name="power" />
+    <input type="number" name="power" required min="1" max="10"/>
+    @Html.ValidationMessageFor(sh => sh.Power)
     <br />
 
     <label>Alien</label>
@@ -19,8 +24,8 @@
     <label>Side</label>
     <br />
     <select name="heroside">
-        <option value="civil" >Civil</option>
-        <option value="good" selected>Good</option>
+        <option value="civil" selected>Civil</option>
+        <option value="good" >Good</option>
         <option value="bad" >Bad</option>
     </select>
     <br />

@@ -9,6 +9,7 @@
         <th>Power</th>
         <th>IsAlien</th>
         <th>Side</th>
+        <th>Actions</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -17,6 +18,11 @@
             @:<td>@item.Power</td>
             @:<td>@item.IsAlien</td>
             @:<td>@item.HeroSide</td>
+            @:<td>
+                @:<a href="/hero/delete?name=@item.Name">Delete</a>
+            @:</td>
         @:</tr>
     }
 </table>
+
+<a href="/hero/create">Create new hero</a>

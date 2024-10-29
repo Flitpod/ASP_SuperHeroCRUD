@@ -28,7 +28,19 @@ namespace M3_SuperHeroCRUD.Controllers
         [HttpPost]
         public IActionResult Create(SuperHero superHero)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(superHero);
+            }
+
             this.repository.Create(superHero);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(string name)
+        {
+            this.repository.Delete(name);
             return RedirectToAction(nameof(Index));
         }
     }
