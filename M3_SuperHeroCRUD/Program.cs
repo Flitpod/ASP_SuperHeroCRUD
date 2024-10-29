@@ -1,3 +1,5 @@
+using M3_SuperHeroCRUD.Data;
+
 namespace M3_SuperHeroCRUD
 {
     public class Program
@@ -7,6 +9,7 @@ namespace M3_SuperHeroCRUD
             var builder = WebApplication.CreateBuilder(args);
             
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSingleton<ISuperHeroRepository,SuperHeroRepository>();
             
             var app = builder.Build();
             app.UseStaticFiles();
