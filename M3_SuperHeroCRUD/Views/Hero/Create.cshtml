@@ -1,0 +1,30 @@
+﻿<h2>Create your Hero</h2>
+
+<form action="/hero/create" method="post" >
+    <label>Name</label>
+    <br/>
+    <input type="text" name="name" />
+    <br/>
+
+    <label>Power</label>
+    <br />
+    <input type="number" name="power" />
+    <br />
+
+    <label>Alien</label>
+    <br />
+    <input type="checkbox" name="isalien" value="true"/>
+    <br />
+
+    <label>Side</label>
+    <br />
+    <select name="heroside">
+        <option value="civil" >Civil</option>
+        <option value="good" selected>Good</option>
+        <option value="bad" >Bad</option>
+    </select>
+    <br />
+
+    <input type="submit" value="Create" />
+
+</form> 

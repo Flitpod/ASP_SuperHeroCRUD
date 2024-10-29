@@ -1,0 +1,22 @@
+﻿@using M3_SuperHeroCRUD.Models
+@model IEnumerable<SuperHero>
+
+<h1>Superheros</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Power</th>
+        <th>IsAlien</th>
+        <th>Side</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        @: <tr>
+            @:<td>@item.Name</td>
+            @:<td>@item.Power</td>
+            @:<td>@item.IsAlien</td>
+            @:<td>@item.HeroSide</td>
+        @:</tr>
+    }
+</table>
