@@ -33,8 +33,7 @@ namespace M3_SuperHeroCRUD.Data
 
             var props = superHero
                 .GetType()
-                .GetProperties()
-                .Where(p => p.Name != "Name");
+                .GetProperties();
 
             foreach (var prop in props)
             {
