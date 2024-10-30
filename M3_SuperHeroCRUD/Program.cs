@@ -1,4 +1,5 @@
 using M3_SuperHeroCRUD.Data;
+using M3_SuperHeroCRUD.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace M3_SuperHeroCRUD
@@ -11,6 +12,7 @@ namespace M3_SuperHeroCRUD
             
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ISuperHeroRepository,SuperHeroRepository>();
+            builder.Services.AddTransient<TableBuilder>();
             builder.Services.AddDbContext<SuperHeroDbContext>(options =>
             {
                 string conn = "Server=(localdb)\\mssqllocaldb;Database=SuperHeroDb;Trusted_Connection=True;MultipleActiveResultSets=True";

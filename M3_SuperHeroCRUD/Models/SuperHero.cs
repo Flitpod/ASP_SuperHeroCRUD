@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using M3_SuperHeroCRUD.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace M3_SuperHeroCRUD.Models
 {
@@ -21,15 +22,19 @@ namespace M3_SuperHeroCRUD.Models
 
         [Required]
         [StringLength(50, ErrorMessage = "Maximum hossz 50 karakter lehet!")]
+        [ShowTable]
         public string Name { get; set; }
 
         [Required]
         [Range(1,10, ErrorMessage = "Az erő minimum 1 és maximum 10 értékű lehet")]
+        [ShowTable]
         public int Power { get; set; }
         
+        [ShowTable]
         public bool IsAlien { get; set; }
 
         [Required]
+        [ShowTable]
         public HeroSide HeroSide { get; set; }
 
         [StringLength(200)]

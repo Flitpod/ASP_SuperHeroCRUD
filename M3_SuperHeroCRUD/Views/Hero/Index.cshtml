@@ -1,5 +1,7 @@
-﻿@using M3_SuperHeroCRUD.Models
+﻿@using M3_SuperHeroCRUD.Helpers
+@using M3_SuperHeroCRUD.Models
 @model IEnumerable<SuperHero>
+@inject TableBuilder tableBuilder
 
 @section head{
     <title>List your Heroes!</title>
@@ -8,6 +10,9 @@
 
 <h1>Superheros</h1>
 
+@Html.Raw(tableBuilder.BuildTable(Model))
+
+<hr />
 <table>
     <tr>
         <th>Picture</th>
