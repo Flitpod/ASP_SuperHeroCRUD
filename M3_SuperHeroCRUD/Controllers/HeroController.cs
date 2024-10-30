@@ -26,8 +26,16 @@ namespace M3_SuperHeroCRUD.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SuperHero superHero)
+        public IActionResult Create(SuperHero superHero, IFormFile pictureData)
         {
+            using(var stream = pictureData.OpenReadStream())
+            {
+                byte[] buffer = new byte[pictureData.Length];
+                stream.Read(buffer, 0, (int)pictureData.Length);
+                string fileName = superHero.Id + "." + pictureData.FileName.Split(".")[1];
+                superHero.ImageFileName = fileName;
+                System.IO.File.WriteAllBytes(Path.Combine("wwwroot","Images", fileName), buffer);
+            }
             if (!ModelState.IsValid)
             {
                 return View(superHero);

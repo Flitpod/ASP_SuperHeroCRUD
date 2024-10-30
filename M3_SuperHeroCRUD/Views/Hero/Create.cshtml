@@ -3,7 +3,7 @@
 
 <h2>Create your Hero</h2>
 
-<form action="/hero/create" method="post" style="display: flex; flex-direction: column">
+<form action="/hero/create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">
     @Html.LabelFor(sh => sh.Name)
     @Html.EditorFor(sh => sh.Name)
     @Html.ValidationMessageFor(sh => sh.Name)
@@ -18,5 +18,10 @@
     @Html.LabelFor(sh => sh.HeroSide)
     @Html.DropDownListFor(sh => sh.HeroSide, Html.GetEnumSelectList(typeof(HeroSide)))
 
+    <input type="hidden" name="imagefilename" value="dummy" />
+    <label>Picture</label>
+    <input type="file" name="picturedata" />
+    
+    <br/>
     <input type="submit" value="Create" />
 </form> 

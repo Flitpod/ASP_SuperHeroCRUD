@@ -12,6 +12,7 @@ namespace M3_SuperHeroCRUD.Migrations
                 name: "SuperHeroes",
                 columns: table => new
                 {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Power = table.Column<int>(type: "int", nullable: false),
                     IsAlien = table.Column<bool>(type: "bit", nullable: false),
@@ -19,7 +20,7 @@ namespace M3_SuperHeroCRUD.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SuperHeroes", x => x.Name);
+                    table.PrimaryKey("PK_SuperHeroes", x => x.Id);
                 });
         }
 

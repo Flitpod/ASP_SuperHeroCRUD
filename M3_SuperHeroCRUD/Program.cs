@@ -13,7 +13,7 @@ namespace M3_SuperHeroCRUD
             builder.Services.AddTransient<ISuperHeroRepository,SuperHeroRepository>();
             builder.Services.AddDbContext<SuperHeroDbContext>(options =>
             {
-                string conn = "Server=(localdb)\\mssqllocaldb;Database=SuperHeroDb;Trusted_COnnection=True;MultipleActiveResultSets=True";
+                string conn = "Server=(localdb)\\mssqllocaldb;Database=SuperHeroDb;Trusted_Connection=True;MultipleActiveResultSets=True";
                 options
                     .UseSqlServer(conn);
             });
