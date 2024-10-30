@@ -1,5 +1,6 @@
 ﻿using M3_SuperHeroCRUD.Data;
 using M3_SuperHeroCRUD.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace M3_SuperHeroCRUD.Controllers
@@ -13,12 +14,13 @@ namespace M3_SuperHeroCRUD.Controllers
             this.repository = repository;
         }
 
-
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         public IActionResult Index()
         {
             return View(this.repository.Read());
         }
 
+        [OutputCache(Duration = 10, VaryByParam = "none")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -86,6 +88,16 @@ namespace M3_SuperHeroCRUD.Controllers
                 return new FileContentResult(superHero.Data, superHero.ContentType);
             }
             return BadRequest();
+        }
+
+        public IActionResult Error()
+        {
+            var exceptionHandlerPathFeature =
+                HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            var message = exceptionHandlerPathFeature.Error.Message;
+
+            return View("Error", message);
         }
     }
 }

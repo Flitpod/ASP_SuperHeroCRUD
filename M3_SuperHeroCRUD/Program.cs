@@ -10,6 +10,7 @@ namespace M3_SuperHeroCRUD
         {
             var builder = WebApplication.CreateBuilder(args);
             
+            builder.Services.AddOutputCaching();
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ISuperHeroRepository,SuperHeroRepository>();
             builder.Services.AddTransient<TableBuilder>();
@@ -21,6 +22,8 @@ namespace M3_SuperHeroCRUD
             });
 
             var app = builder.Build();
+            app.UseOutputCaching();
+            app.UseExceptionHandler("/Hero/Error"); 
             app.UseStaticFiles();
             app.UseRouting();
             app.MapControllers();

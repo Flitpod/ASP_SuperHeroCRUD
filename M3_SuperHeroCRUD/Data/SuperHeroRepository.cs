@@ -16,6 +16,11 @@ namespace M3_SuperHeroCRUD.Data
         // methods
         public void Create(SuperHero superHero)
         {
+            var heroesSameName = db.SuperHeroes.FirstOrDefault(sh  => sh.Name == superHero.Name);
+            if (heroesSameName != null)
+            {
+                throw new ArgumentException("Hero with this name alredy exists!");
+            }
             this.db.SuperHeroes.Add(superHero);
             this.db.SaveChanges();
         }
