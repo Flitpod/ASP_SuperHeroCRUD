@@ -33,7 +33,11 @@ namespace M3_SuperHeroCRUD.Models
         public HeroSide HeroSide { get; set; }
 
         [StringLength(200)]
-        public string ImageFileName { get; set; }
+        public string? ImageFileName { get; set; }
+
+        public string? ContentType { get; set; }
+
+        public byte[]? Data { get; set; }
 
         public SuperHero()
         {

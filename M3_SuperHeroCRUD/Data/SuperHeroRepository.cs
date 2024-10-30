@@ -20,9 +20,13 @@ namespace M3_SuperHeroCRUD.Data
             this.db.SaveChanges();
         }
         public IEnumerable<SuperHero> Read() => this.db.SuperHeroes;
-        public SuperHero Read(string name)
+        public SuperHero? Read(string name)
         {
             return this.db.SuperHeroes.FirstOrDefault(sh => sh.Name == name);
+        }
+        public SuperHero? ReadFromId(string id)
+        {
+            return this.db.SuperHeroes.FirstOrDefault(sh => sh.Id == id);
         }
 
         public void Update(SuperHero superHero)
@@ -36,7 +40,8 @@ namespace M3_SuperHeroCRUD.Data
 
             var props = superHero
                 .GetType()
-                .GetProperties();
+                .GetProperties()
+                .Where(p => p.GetValue(superHero) != null && p.Name != "Id");
 
             foreach (var prop in props)
             {

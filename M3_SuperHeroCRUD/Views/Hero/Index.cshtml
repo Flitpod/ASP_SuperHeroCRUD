@@ -5,6 +5,7 @@
 
 <table>
     <tr>
+        <th>Picture</th>
         <th>Name</th>
         <th>Power</th>
         <th>IsAlien</th>
@@ -14,6 +15,7 @@
     @foreach (var item in Model)
     {
         @: <tr>
+            @:<td><img height="50" src="@Url.Action("GetImage","Hero", new { id = item.Id} )"/></td>
             @:<td>@item.Name</td>
             @:<td>@item.Power</td>
             @:<td>@item.IsAlien</td>

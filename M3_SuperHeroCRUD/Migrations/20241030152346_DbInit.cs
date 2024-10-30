@@ -16,7 +16,8 @@ namespace M3_SuperHeroCRUD.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Power = table.Column<int>(type: "int", nullable: false),
                     IsAlien = table.Column<bool>(type: "bit", nullable: false),
-                    HeroSide = table.Column<int>(type: "int", nullable: false)
+                    HeroSide = table.Column<int>(type: "int", nullable: false),
+                    ImageFileName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {

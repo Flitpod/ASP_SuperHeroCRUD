@@ -7,7 +7,8 @@ namespace M3_SuperHeroCRUD.Data
         void Create(SuperHero superHero);
         void Delete(string name);
         IEnumerable<SuperHero> Read();
-        SuperHero Read(string name);
+        SuperHero? Read(string name);
+        SuperHero? ReadFromId(string id);
         void Update(SuperHero superHero);
     }
 }

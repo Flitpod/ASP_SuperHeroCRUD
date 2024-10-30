@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace M3_SuperHeroCRUD.Migrations
 {
     [DbContext(typeof(SuperHeroDbContext))]
-    [Migration("20241030150229_DbInit")]
+    [Migration("20241030152346_DbInit")]
     partial class DbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,11 @@ namespace M3_SuperHeroCRUD.Migrations
 
                     b.Property<int>("HeroSide")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageFileName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<bool>("IsAlien")
                         .HasColumnType("bit");

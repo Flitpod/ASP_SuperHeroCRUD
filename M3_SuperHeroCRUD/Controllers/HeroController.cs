@@ -34,7 +34,13 @@ namespace M3_SuperHeroCRUD.Controllers
                 stream.Read(buffer, 0, (int)pictureData.Length);
                 string fileName = superHero.Id + "." + pictureData.FileName.Split(".")[1];
                 superHero.ImageFileName = fileName;
-                System.IO.File.WriteAllBytes(Path.Combine("wwwroot","Images", fileName), buffer);
+
+                // static file solution
+                // System.IO.File.WriteAllBytes(Path.Combine("wwwroot","Images", fileName), buffer);
+                
+                // database solution
+                superHero.ContentType = pictureData.ContentType;
+                superHero.Data = buffer;
             }
             if (!ModelState.IsValid)
             {
@@ -69,6 +75,17 @@ namespace M3_SuperHeroCRUD.Controllers
 
             this.repository.Update(superHero);
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult GetImage(string id)
+        {
+            var superHero = this.repository.ReadFromId(id);
+            if (superHero?.ContentType?.Length > 0)
+            {
+                return new FileContentResult(superHero.Data, superHero.ContentType);
+            }
+            return BadRequest();
         }
     }
 }
