@@ -17,8 +17,6 @@ namespace M3_SuperHeroCRUD.Models
     public class SuperHero
     {
         [Key]
-        public string Id { get; set; }
-
         [Required]
         [StringLength(50, ErrorMessage = "Maximum hossz 50 karakter lehet!")]
         public string Name { get; set; }
@@ -31,11 +29,5 @@ namespace M3_SuperHeroCRUD.Models
 
         [Required]
         public HeroSide HeroSide { get; set; }
-
-        // ctor
-        public SuperHero()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
     }
 }

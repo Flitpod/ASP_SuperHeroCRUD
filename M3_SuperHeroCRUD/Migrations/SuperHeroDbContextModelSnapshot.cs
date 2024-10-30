@@ -23,8 +23,9 @@ namespace M3_SuperHeroCRUD.Migrations
 
             modelBuilder.Entity("M3_SuperHeroCRUD.Models.SuperHero", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Name")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("HeroSide")
                         .HasColumnType("int");
@@ -32,15 +33,10 @@ namespace M3_SuperHeroCRUD.Migrations
                     b.Property<bool>("IsAlien")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<int>("Power")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
                     b.ToTable("SuperHeroes");
                 });
