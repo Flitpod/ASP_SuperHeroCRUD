@@ -5,21 +5,24 @@ namespace M3_SuperHeroCRUD.Data
     public class SuperHeroRepository : ISuperHeroRepository
     {
         // fields
-        List<SuperHero> superHeroes;
+        private SuperHeroDbContext db;
 
         // ctor
-        public SuperHeroRepository()
+        public SuperHeroRepository(SuperHeroDbContext db)
         {
-            this.superHeroes = new List<SuperHero>();
+            this.db = db;
         }
 
         // methods
-        public void Create(SuperHero superHero) => superHeroes.Add(superHero);
-
-        public IEnumerable<SuperHero> Read() => this.superHeroes;
+        public void Create(SuperHero superHero)
+        {
+            this.db.SuperHeroes.Add(superHero);
+            this.db.SaveChanges();
+        }
+        public IEnumerable<SuperHero> Read() => this.db.SuperHeroes;
         public SuperHero Read(string name)
         {
-            return this.superHeroes.FirstOrDefault(sh => sh.Name == name);
+            return this.db.SuperHeroes.FirstOrDefault(sh => sh.Name == name);
         }
 
         public void Update(SuperHero superHero)
@@ -39,18 +42,21 @@ namespace M3_SuperHeroCRUD.Data
             {
                 prop.SetValue(oldHero, prop.GetValue(superHero));
             }
+
+            this.db.SaveChanges();
         }
 
-        public bool Delete(string name)
+        public void Delete(string name)
         {
             var hero = Read(name);
 
             if (hero == null)
             {
-                return false;
+                return;
             }
 
-            return superHeroes.Remove(hero);
+            this.db.SuperHeroes.Remove(hero);
+            this.db.SaveChanges();
         }
     }
 }

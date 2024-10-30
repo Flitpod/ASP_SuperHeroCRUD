@@ -1,4 +1,5 @@
 using M3_SuperHeroCRUD.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace M3_SuperHeroCRUD
 {
@@ -9,8 +10,13 @@ namespace M3_SuperHeroCRUD
             var builder = WebApplication.CreateBuilder(args);
             
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<ISuperHeroRepository,SuperHeroRepository>();
-            
+            builder.Services.AddTransient<ISuperHeroRepository,SuperHeroRepository>();
+            builder.Services.AddDbContext<SuperHeroDbContext>(options =>
+            {
+                options
+                    .UseInMemoryDatabase("SuperHeroDb");
+            });
+
             var app = builder.Build();
             app.UseStaticFiles();
             app.UseRouting();

@@ -16,6 +16,7 @@ namespace M3_SuperHeroCRUD.Models
 
     public class SuperHero
     {
+        [Key]
         [Required]
         [StringLength(50, ErrorMessage = "Maximum hossz 50 karakter lehet!")]
         public string Name { get; set; }
