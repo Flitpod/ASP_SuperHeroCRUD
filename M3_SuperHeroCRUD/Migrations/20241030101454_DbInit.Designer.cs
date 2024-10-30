@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace M3_SuperHeroCRUD.Migrations
 {
     [DbContext(typeof(SuperHeroDbContext))]
-    [Migration("20241030095435_DbInit")]
+    [Migration("20241030101454_DbInit")]
     partial class DbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,9 +25,8 @@ namespace M3_SuperHeroCRUD.Migrations
 
             modelBuilder.Entity("M3_SuperHeroCRUD.Models.SuperHero", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("HeroSide")
                         .HasColumnType("int");
@@ -35,10 +34,15 @@ namespace M3_SuperHeroCRUD.Migrations
                     b.Property<bool>("IsAlien")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int>("Power")
                         .HasColumnType("int");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.ToTable("SuperHeroes");
                 });
