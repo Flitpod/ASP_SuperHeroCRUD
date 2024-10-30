@@ -1,4 +1,5 @@
 ﻿using M3_SuperHeroCRUD.Helpers;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace M3_SuperHeroCRUD.Models
@@ -15,6 +16,7 @@ namespace M3_SuperHeroCRUD.Models
         Bad = 2
     }
 
+    [ModelBinder(BinderType = typeof(SuperHeroModelBinder))]
     public class SuperHero
     {
         [Key]

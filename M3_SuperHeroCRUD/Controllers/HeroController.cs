@@ -14,13 +14,13 @@ namespace M3_SuperHeroCRUD.Controllers
             this.repository = repository;
         }
 
-        [OutputCache(Duration = 10, VaryByParam = "none")]
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         public IActionResult Index()
         {
             return View(this.repository.Read());
         }
 
-        [OutputCache(Duration = 10, VaryByParam = "none")]
+        [OutputCache(Duration = 5, VaryByParam = "none")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -28,22 +28,8 @@ namespace M3_SuperHeroCRUD.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SuperHero superHero, IFormFile pictureData)
+        public IActionResult Create(SuperHero superHero)
         {
-            using(var stream = pictureData.OpenReadStream())
-            {
-                byte[] buffer = new byte[pictureData.Length];
-                stream.Read(buffer, 0, (int)pictureData.Length);
-                string fileName = superHero.Id + "." + pictureData.FileName.Split(".")[1];
-                superHero.ImageFileName = fileName;
-
-                // static file solution
-                // System.IO.File.WriteAllBytes(Path.Combine("wwwroot","Images", fileName), buffer);
-                
-                // database solution
-                superHero.ContentType = pictureData.ContentType;
-                superHero.Data = buffer;
-            }
             if (!ModelState.IsValid)
             {
                 return View(superHero);
