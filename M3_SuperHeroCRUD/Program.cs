@@ -13,8 +13,9 @@ namespace M3_SuperHeroCRUD
             builder.Services.AddTransient<ISuperHeroRepository,SuperHeroRepository>();
             builder.Services.AddDbContext<SuperHeroDbContext>(options =>
             {
+                string conn = "Server=(localdb)\\mssqllocaldb;Database=SuperHeroDb;Trusted_COnnection=True;MultipleActiveResultSets=True";
                 options
-                    .UseInMemoryDatabase("SuperHeroDb");
+                    .UseSqlServer(conn);
             });
 
             var app = builder.Build();
