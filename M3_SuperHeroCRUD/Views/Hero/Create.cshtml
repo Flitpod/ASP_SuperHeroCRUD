@@ -1,6 +1,11 @@
 ﻿@using M3_SuperHeroCRUD.Models
 @model SuperHero
 
+@section head{
+    <title>Create new Hero!</title>
+    <meta name="keywords" content="create, hero creator, heroeditor" />
+}
+
 <h2>Create your Hero</h2>
 
 <form action="/hero/create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">

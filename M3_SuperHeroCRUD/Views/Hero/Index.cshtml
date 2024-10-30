@@ -1,6 +1,11 @@
 ﻿@using M3_SuperHeroCRUD.Models
 @model IEnumerable<SuperHero>
 
+@section head{
+    <title>List your Heroes!</title>
+    <meta name="keywords" content="list, heroes, herocollection" />
+}
+
 <h1>Superheros</h1>
 
 <table>
@@ -27,5 +32,3 @@
         @:</tr>
     }
 </table>
-
-<a href="/hero/create">Create new hero</a>
