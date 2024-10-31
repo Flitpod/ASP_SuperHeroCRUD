@@ -2,12 +2,16 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="~/style.css" />
     <meta name="viewport" content="width=device-width" />
     @RenderSection("head", false)
 </head>
 <body>
     @Html.Partial("Navbar")
-    @RenderBody()
+
+    <section>
+        @RenderBody()
+    </section>
     
 </body>
 </html>
