@@ -1,0 +1,22 @@
+﻿@using M3_SuperHeroCRUD.Models
+@model IEnumerable<SuperHero>
+
+@section head {
+    <title>List your Heroes!</title>
+    <meta name="keywords" content="list, heroes, herocollection" />
+}
+
+<h1>SuperHeroes</h1>
+
+<div class="herogrid">
+    @foreach (var item in Model)
+    {
+        <div class="herocard">
+            <div class="heroimage">
+                <img  height="100" src="@Url.Action("GetImage","Hero", new { id = item.Id })" />
+            </div>
+            <p class="heroname">@item.Name</p>
+            <p class="heropower">@item.Power</p>
+        </div>
+    }
+</div>

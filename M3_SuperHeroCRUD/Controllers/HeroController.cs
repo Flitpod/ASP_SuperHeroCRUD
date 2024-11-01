@@ -76,6 +76,13 @@ namespace M3_SuperHeroCRUD.Controllers
             return BadRequest();
         }
 
+        [OutputCache(Duration = 5, VaryByParam = "none")]
+        [HttpGet]
+        public IActionResult List()
+        {
+            return View(this.repository.Read());
+        }
+
         public IActionResult Error()
         {
             var exceptionHandlerPathFeature =
