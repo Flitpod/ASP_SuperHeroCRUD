@@ -32,7 +32,7 @@ section {
 }
 
 i {
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 /*Body font-style, element borders, sizes end*/
 
@@ -58,6 +58,11 @@ input, button, select {
 
 label {
     font-weight: bold;
+}
+
+form {
+    display: flex; 
+    flex-direction: column;
 }
 /*update and create form elements style end*/
 
@@ -96,3 +101,72 @@ a:hover {
     background-color: lightblue;
 }
 /*index style end*/
+
+/*Herocard list view style begin*/
+.herocard {
+    border: 2px solid black;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.herocard .heroimage {
+    height: 45vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.herocard .heroimage img {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    max-width: inherit;
+    padding: 0px;
+    border-radius: 10px;
+} 
+
+.herocard .heroname {
+    font-size: 1.5em;
+}
+
+.herocard .heropower {
+    font-size: 1.5em;
+    background-color: yellow;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.herogrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .herogrid {
+        grid-template-columns: auto auto;
+        justify-items: center;
+    }
+
+    .herocard {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .herogrid {
+        grid-template-columns: auto;
+        justify-items: center;
+    }
+
+    .herocard {
+        width: 90vw;
+    }
+}
+/*Herocard list view style end*/

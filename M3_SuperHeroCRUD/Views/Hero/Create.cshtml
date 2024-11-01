@@ -8,7 +8,7 @@
 
 <h2>Create your Hero</h2>
 
-<form action="/hero/create" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column">
+<form action="/hero/create" method="post" enctype="multipart/form-data">
     @Html.LabelFor(sh => sh.Name)
     @Html.EditorFor(sh => sh.Name)
     @Html.ValidationMessageFor(sh => sh.Name)
