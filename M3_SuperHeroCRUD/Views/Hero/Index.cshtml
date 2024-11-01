@@ -10,9 +10,10 @@
 
 <h1>Superheros</h1>
 
-@Html.Raw(tableBuilder.BuildTable(Model))
+@{
+    // @Html.Raw(tableBuilder.BuildTable(Model))
+}
 
-<hr />
 <table>
     <tr>
         <th>Picture</th>
@@ -31,8 +32,14 @@
             @:<td>@item.IsAlien</td>
             @:<td>@item.HeroSide</td>
             @:<td>
-                @:<a href="/hero/delete?name=@item.Name">Delete</a>
-                @:<a href="/hero/update?name=@item.Name">Update</a>
+                @:<a href="/hero/delete?name=@item.Name">
+                    @:<i class="fa-solid fa-trash"></i>
+                    @:Delete
+                @:</a>
+                @:<a href="/hero/update?name=@item.Name">
+                    @:<i class="fa-solid fa-sliders"></i>
+                    @:Update
+                @:</a>
             @:</td>
         @:</tr>
     }
