@@ -148,6 +148,11 @@ a:hover {
     gap: 30px 10px;
 }
 
+.progress-bar {
+    background-color: yellow;
+    color: black;
+}
+
 @media screen and (max-width: 800px) {
     .herogrid {
         grid-template-columns: auto auto;
