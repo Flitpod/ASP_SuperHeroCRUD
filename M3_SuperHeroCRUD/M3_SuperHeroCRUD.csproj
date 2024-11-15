@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="test-results\" />
+    <Folder Include="tests\pages\" />
+    <Folder Include="tests\resources\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
