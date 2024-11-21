@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="test-results\**" />
+    <Content Remove="test-results\**" />
+    <EmbeddedResource Remove="test-results\**" />
+    <None Remove="test-results\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.35" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.35" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.35" />
@@ -20,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="test-results\" />
     <Folder Include="tests\pages\" />
     <Folder Include="tests\resources\" />
     <Folder Include="wwwroot\Images\" />

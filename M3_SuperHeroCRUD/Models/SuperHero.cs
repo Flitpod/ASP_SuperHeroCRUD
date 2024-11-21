@@ -1,6 +1,7 @@
 ﻿using M3_SuperHeroCRUD.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace M3_SuperHeroCRUD.Models
 {
@@ -39,11 +40,14 @@ namespace M3_SuperHeroCRUD.Models
         [ShowTable]
         public HeroSide HeroSide { get; set; }
 
+        [JsonIgnore]
         [StringLength(200)]
         public string? ImageFileName { get; set; }
 
+        [JsonIgnore]
         public string? ContentType { get; set; }
 
+        [JsonIgnore]
         public byte[]? Data { get; set; }
 
         public SuperHero()
